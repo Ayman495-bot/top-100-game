@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top 100 Guess Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #score {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .reset-btn {
+      background-color: #f44336;
+      margin-top: 10px;
+    }
+
+    .reset-btn:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Top 100 Guess Game</h2>
+
+    <!-- Game Mode Selector -->
+    <select id="gameMode">
+      <option value="name-to-rank">Guess the Name</option>
+      <option value="rank-to-name">Guess the Rank</option>
+    </select>
+
+    <!-- Category Selector -->
+<select id="category" onchange="handleCategoryChange()">
+  <option value="athlete">Highest paid athletes</option>
+  <option value="instagram">Most followed Instagram accounts</option>
+  <option value="countries">Countries by population</option>
+  <option value="movies">Movies by IMDB rating</option>
+  <option value="UkBoysNames">Most popular boys names (UK)</option>
+</select>
+
+    <!-- Guess-the-Name Section -->
+    <div id="guessSection">
+      <input type="text" id="guess" placeholder="Enter your guess" />
+      <button onclick="submitGuess()">Submit</button>
+    </div>
+
+    <!-- Guess-the-Rank Section (initially hidden) -->
+    <div id="guessTheRankSection" style="display: none;">
+      <p>What rank is: <strong id="randomNameDisplay"></strong>?</p>
+      <input type="number" id="rankGuessInput" placeholder="Enter rank (1–100)">
+      <button onclick="submitRankGuess()">Submit Rank Guess</button>
+    </div>
+
+    <!-- Score + Reset -->
+    <button class="reset-btn" onclick="resetScore()">Reset Score</button>
+    <p id="result"></p>
+    <p id="score">Score: 0</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
